@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# Packers_n_Movers
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+Packers_n_Movers is an advanced web application designed to simplify packers and movers services. This enhanced version of the initial `Pack_n_Move` project is built using React.js, Node.js, and MySQL, providing an intuitive user interface and powerful backend functionalities. The platform allows users to search for services based on their desired `from` and `to` locations, compare companies by ratings and prices, and book services seamlessly.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
+1. **User Authentication**
+   - Login and Registration functionality.
+   - User profile management.
+2. **Service Search**
+   - Search services based on `from` and `to` locations.
+3. **Dynamic Cost Calculator**
+   - Estimate the cost of the service based on distance and weight.
+4. **Company Comparison**
+   - View company details, including ratings, prices, and availability.
+5. **Service Booking**
+   - Book a service after comparing options.
+6. **Feedback System**
+   - Users can leave feedback for services.
+7. **Chat Assistant**
+   - Interact with a chatbot for queries related to the application.
+8. **Admin Panel**
+   - View booking history.
+   - Cancel bookings.
+   - Manage companies.
+   - Respond to user feedback.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
+- **Frontend**: React.js
+- **Backend**: Node.js
+- **Database**: MySQL
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Installation Guide
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
+- Node.js and npm
+- MySQL Database
+- IDE (e.g., Visual Studio Code)
 
-### `npm run build`
+## Usage Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **User Workflow**
+   - Register or log in to the platform.
+   - Use the search feature to select your `from` and `to` locations.
+   - Utilize the Dynamic Cost Calculator to estimate service costs.
+   - Browse companies, compare ratings and prices.
+   - Choose a company, book the service, and leave feedback after completion.
+   - Interact with the Chat Assistant for any queries.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Admin Workflow**
+   - Log in to the admin panel.
+   - View and manage booking history.
+   - Approve, cancel, or update bookings.
+   - View and manage companies.
+   - Respond to user feedback.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Database Schema
+### Table: `users`
+| Field     | Type         | Description         |
+|-----------|--------------|---------------------|
+| id        | INT          | Auto-increment ID  |
+| username  | VARCHAR(255) | User's name        |
+| email     | VARCHAR(255) | User's email       |
+| password  | VARCHAR(255) | User's password    |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Table: `bookings`
+| Field         | Type          | Description                |
+|---------------|---------------|----------------------------|
+| booking_id    | INT           | Auto-increment booking ID |
+| user_id       | INT           | User ID (foreign key)     |
+| from_location | VARCHAR(255)  | Starting location         |
+| to_location   | VARCHAR(255)  | Destination location      |
+| company_id    | INT           | Selected company ID       |
+| status        | ENUM('Pending','Approved','Cancelled') | Booking status |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Table: `companies`
+| Field         | Type          | Description                |
+|---------------|---------------|----------------------------|
+| company_id    | INT           | Auto-increment company ID |
+| name          | VARCHAR(255)  | Company name              |
+| rating        | DECIMAL(3,2)  | Average company rating    |
+| price         | DECIMAL(10,2) | Price for services        |
+| location      | VARCHAR(255)  | Company location          |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Table: `feedback`
+| Field         | Type          | Description                |
+|---------------|---------------|----------------------------|
+| feedback_id   | INT           | Auto-increment feedback ID|
+| user_id       | INT           | User ID (foreign key)     |
+| message       | TEXT          | Feedback message          |
+| date          | DATETIME      | Feedback date             |
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Future Enhancements
+- Integration of payment gateways.
+- Real-time location tracking for services.
+- Advanced analytics for user preferences.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
